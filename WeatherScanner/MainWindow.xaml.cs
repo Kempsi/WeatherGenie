@@ -19,6 +19,8 @@ namespace WeatherScanner
 			InitializeComponent();
 			EncryptConfig();
 			GetWeather();
+
+			// Test comment
 		}
 
 		private void EncryptConfig()
