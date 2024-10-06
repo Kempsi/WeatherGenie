@@ -19,8 +19,6 @@ namespace WeatherScanner
 			InitializeComponent();
 			EncryptConfig();
 			GetWeather();
-
-			// Test comment
 		}
 
 		private void EncryptConfig()
@@ -40,15 +38,22 @@ namespace WeatherScanner
 			geocoder = new GeoCoderAPI();
 			var cords = await geocoder.GetCords("Joensuu");
 
-			// SE TOIMII!!
+			// IT WORKS
 			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
 			
 			foreach (var forecast in forecastResponse.list)
 			{
-				ForecastListBox.Items.Add($"Aika: {forecast.dt_txt}, Lämpötila: {forecast.main.temp}, Sää: {forecast.weather[0].description}");
+				// Testing API data to see how it is
+				ForecastListBox.Items.Add(
+					$"Aika: {forecast.dt_txt}, " +
+					$"Lämpötila: {forecast.main.temp}, " +
+					$"Sää: {forecast.weather[0].description}, " +
+					$"Kaupunki: {forecastResponse.city.name}, " + 
+					$"DateTime Unix: {forecast.dt}");
 			}
 		}
 
+		// Test method for displaying current days weather info
 		private void DisplayWeather(WeatherData weatherData)
 		{
 			if (weatherData != null)
