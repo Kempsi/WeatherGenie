@@ -4,9 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherScanner"
+        xmlns:UI="clr-namespace:WeatherScanner.UI.ForecastCard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Weather Genie" Height="600" Width="800">
     <Grid>
-        <ListBox x:Name="ForecastListBox" />
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center">
+
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+
+        </StackPanel>
+        
+
+
     </Grid>
 </Window>
