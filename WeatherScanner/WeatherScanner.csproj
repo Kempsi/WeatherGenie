@@ -17,6 +17,7 @@
     <None Remove="Icons\min_Act_Icon.png" />
     <None Remove="Icons\min_Icon.png" />
     <None Remove="Icons\refresh_icon.png" />
+    <None Remove="Icons\sunny_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +47,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\refresh_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\sunny_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

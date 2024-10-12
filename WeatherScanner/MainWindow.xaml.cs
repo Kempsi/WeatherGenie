@@ -4,6 +4,7 @@ using System.Windows.Input;
 using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.Entities.WeatherModels;
+using WeatherScanner.UI.ForecastCard;
 
 namespace WeatherScanner
 {
@@ -15,11 +16,11 @@ namespace WeatherScanner
 		WeatherAPI apiCaller;
 		GeoCoderAPI geocoder;
 
+
 		public MainWindow()
 		{
 			InitializeComponent();
-			EncryptConfig();
-			
+			EncryptConfig();	
 		}
 
 		public async void GetWeather()
@@ -30,7 +31,6 @@ namespace WeatherScanner
 
 			// IT WORKS
 			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
-			
 
 		}
 

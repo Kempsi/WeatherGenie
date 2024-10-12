@@ -7,50 +7,85 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" 
              d:DesignWidth="200">
-    
-    <Border CornerRadius="8"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Width="180"
-            Height="180" Margin="10,5,5,10">
-        
-        <Border.Background >
-            <SolidColorBrush Color="#FFC0D4FF" 
-                             Opacity="0.5"/>
-        </Border.Background>
 
-        <StackPanel Margin="10,5,10,5">
-            <Label Content="Fri 21"
-                   FontSize="20"
-                   Foreground="White"/>
-
-            <Label Content="ICON"
-                   FontSize="25"
-                   Foreground="White"/>
-
-            <StackPanel Orientation="Horizontal"
-                        Margin="0,0,0,15">
-                
-                <Label Content="37°"
-                       FontSize="25"
-                       Foreground="White"/>
-
-                <Label Content="28°"
-                       FontSize="20"
-                       Foreground="#FFD9D9D9" 
-                       Margin="0,5,0,0"/>
-                
-            </StackPanel>
+    <Button Background="Transparent"
+            BorderBrush="Transparent"
+            Click="btn_ForecastCardClicked"
+            Style="{StaticResource myButton}"
+            Height="190"
+            Width="190">
             
-
-
-            <Label Content="Mostly sunny"
-                   FontSize="16"
-                   Foreground="White"/>
-        </StackPanel>
         
+        
+        <Border CornerRadius="10"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Width="180" x:Name="border"
+           Height="180" Margin="10,5,5,10">
+
+            <Border.Background >
+                <SolidColorBrush Color="#FFC0D4FF" 
+                            Opacity="0.0"/>
+            </Border.Background>
+
+            <StackPanel Margin="10,5,10,5">
+
+                <StackPanel Orientation="Horizontal"
+                       Margin="0,0,0,15">
+
+                    <Label Content="{Binding Day}"
+                      FontSize="20"
+                      Width="45"
+                      Height="35"
+                      Foreground="White"/>
+
+                    <Label Content="{Binding Date}"
+                      FontSize="20"
+                      Width="35"
+                      Height="35"
+                      Foreground="White"/>
+
+                </StackPanel>
+
+
+                <Image Source="{Binding ImageSource}"
+                  Width="25"
+                  Height="25"
+                  HorizontalAlignment="Left"
+                  Margin="10,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal"
+                       Margin="0,0,0,10">
+
+                    <Label Content="{Binding TempHigh}"
+                      FontSize="25"
+                      Height="45"
+                      Width="45"
+                      Foreground="White"/>
+
+                    <Label Content="{Binding TempLow}"
+                      FontSize="20"
+                      Height="39"
+                      Width="45"
+                      Foreground="#FFD9D9D9" 
+                      Margin="0,5,0,0"/>
+
+                </StackPanel>
 
 
 
-    </Border>
+                <Label Content="{Binding Desc}"
+                  FontSize="16"
+                  Height="35"
+                  Width="160"
+                  Foreground="White"/>
+            </StackPanel>
+
+
+
+
+        </Border>
+    </Button>
+
+ 
 </UserControl>

@@ -122,7 +122,7 @@
                     HorizontalAlignment="Center"
                     Grid.Row="3">
 
-            <UI:ForecastCard/>
+            <UI:ForecastCard IsActive="True" x:Name="fore" ImageSource="pack://application:,,,/WeatherScanner;component/Icons/sunny_icon.png"/>
             <UI:ForecastCard/>
             <UI:ForecastCard/>
             <UI:ForecastCard/>
