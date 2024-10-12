@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Windows;
+using System.Windows.Input;
 using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.Entities.WeatherModels;
@@ -41,44 +42,34 @@ namespace WeatherScanner
 			// IT WORKS
 			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
 			
-			//foreach (var forecast in forecastResponse.list)
-			//{
-			//	// Testing API data to see how it is
-			//	ForecastListBox.Items.Add(
-			//		$"Aika: {forecast.dt_txt}, " +
-			//		$"Lämpötila: {forecast.main.temp}, " +
-			//		$"Sää: {forecast.weather[0].description}, " +
-			//		$"Kaupunki: {forecastResponse.city.name}, " + 
-			//		$"DateTime Unix: {forecast.dt}");
-			//}
+
 		}
 
-		// Test method for displaying current days weather info
-		private void DisplayWeather(WeatherData weatherData)
+
+
+		private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			if (weatherData != null)
-			{
-				string weatherInfo = "City: " + weatherData.City + "\n" +
-					"Temperature: " + weatherData.Temp + "°C\n" +
-					"Feels like: " + weatherData.TempFeelsLike + "°C\n" +
-					"Main: " + weatherData.Main + "\n" +
-					"Description: " + weatherData.Description;
-
-				MessageBox.Show(weatherInfo);
-			}
-
-			else
-			{
-				MessageBox.Show("Error fetching data");
-			}
-
-
-
-			
+			DragMove();
 		}
 
 
 
+		private void btn_CloseClicked(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
+
+		private void btn_MinClicked(object sender, RoutedEventArgs e)
+		{
+			WindowState = WindowState.Minimized;
+		}
+
+
+		private void Window_ContentRendered(object sender, EventArgs e)
+		{
+			MinWidth = ActualWidth;
+			MinHeight = ActualHeight;
+		}
 	}
 
 

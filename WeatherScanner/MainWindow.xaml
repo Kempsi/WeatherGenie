@@ -4,28 +4,135 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherScanner"
-        xmlns:UI="clr-namespace:WeatherScanner.UI.ForecastCard"
+        xmlns:UI="clr-namespace:WeatherScanner.UI.ForecastCard" 
+        xmlns:WindowControls="clr-namespace:GalleryApp.UserControls"
         mc:Ignorable="d"
-        Title="Weather Genie" Height="600" Width="800">
+        Title="Weather Genie" 
+        WindowStyle="None"
+        ContentRendered="Window_ContentRendered"
+        WindowStartupLocation="CenterScreen"
+        Height="800" 
+        Width="1000">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0"
+                      CornerRadius="0"
+                      CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+
     <Grid>
 
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="150" />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="200" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="1"
-                    HorizontalAlignment="Center">
+        <!-- Background image -->
+        <Grid Grid.Row="1"
+              Grid.RowSpan="3">
+            <Image Source="/BackgroundImages/cloudy.jpg" 
+                   RenderTransformOrigin="0.5,0.5" 
+                   
+                   >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
 
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
+        </Grid>
+
+        <!-- Top bar -->
+        <Grid>
+            <Rectangle MouseDown="TopBar_MouseDown"
+                       Fill="#FF1E7DFF"/>
+        </Grid>
+
+        <!-- Tool bar -->
+
+        <Grid Grid.Row="1"
+              Background="#FF001533"
+              Opacity="0.6"
+              HorizontalAlignment="Stretch">
+
+            <Label Content="Forecast"
+                   Foreground="White"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   IsHitTestVisible="False"
+                   FontSize="25"
+                   Margin="0,0,872,0"/>
+
+
+            <WindowControls:WindowControlButton
+                NormalImageSource="../Icons/refresh_icon.png"
+                ActiveImageSource="../Icons/refresh_icon.png"
+                HorizontalAlignment="Left"
+                Height="25" Width="25" 
+                Margin="960,12,0,12"
+                RenderTransformOrigin="0.5,0.5">
+                <WindowControls:WindowControlButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </WindowControls:WindowControlButton.RenderTransform>
+            </WindowControls:WindowControlButton>
+
+
+        </Grid>
+
+        <!-- Window controls -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+            <Label Content="Weather Genie"
+                   Foreground="White"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   IsHitTestVisible="False"
+                   FontSize="16"
+                   Margin="0,0,780,0"/>
+
+            <WindowControls:WindowControlButton 
+                NormalImageSource="../Icons/min_Icon.png"
+                ActiveImageSource="../Icons/min_Act_Icon.png"
+                ButtonClick="btn_MinClicked"
+                Height="25" Width="25"
+                Margin="10,0,15,0"/>
+
+            <WindowControls:WindowControlButton 
+                NormalImageSource="../Icons/close_Icon.png"
+                ActiveImageSource="../Icons/close_Act_Icon.png"
+                ButtonClick="btn_CloseClicked"
+                Height="25" Width="25"
+                Margin="10,0,15,0"/>
 
         </StackPanel>
-        
+
+        <!-- Forecast cards -->
+        <StackPanel Orientation="Horizontal"  
+                    HorizontalAlignment="Center"
+                    Grid.Row="3">
+
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard/>
+            <UI:ForecastCard Margin="0,0,5,0"/>
+
+        </StackPanel>
+
 
 
     </Grid>

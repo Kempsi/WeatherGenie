@@ -9,7 +9,45 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BackgroundImages\cloudy.jpg" />
+    <None Remove="Icons\close_Act_Icon.png" />
+    <None Remove="Icons\close_Icon.png" />
+    <None Remove="Icons\max_Act_Icon.png" />
+    <None Remove="Icons\max_Icon.png" />
+    <None Remove="Icons\min_Act_Icon.png" />
+    <None Remove="Icons\min_Icon.png" />
+    <None Remove="Icons\refresh_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="BackgroundImages\cloudy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\close_Act_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\close_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\max_Act_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\max_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\min_Act_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\min_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\refresh_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
