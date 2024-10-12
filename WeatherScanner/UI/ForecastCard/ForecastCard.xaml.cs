@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WeatherScanner.UI.ForecastCard
 {
@@ -117,6 +105,7 @@ namespace WeatherScanner.UI.ForecastCard
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 		}
 
+		// Changes background depending on active state
 		private void SetAsActive()
 		{
 
@@ -132,7 +121,7 @@ namespace WeatherScanner.UI.ForecastCard
 		}
 
 
-
+		// When clicked, invokes button event and sets isActive state
 		private void btn_ForecastCardClicked(object sender, RoutedEventArgs e)
 		{
 			ButtonClick?.Invoke(this, e);
