@@ -22,17 +22,6 @@ namespace WeatherScanner
 			
 		}
 
-		private void EncryptConfig()
-		{
-			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-			if (!config.AppSettings.SectionInformation.IsProtected)
-			{
-				config.AppSettings.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
-				config.Save();
-			}
-		}
-
 		public async void GetWeather()
 		{
 			apiCaller = new WeatherAPI();
@@ -46,30 +35,44 @@ namespace WeatherScanner
 		}
 
 
+		#region Window controls
 
+		// Enables dragging for window when holding mouse down
 		private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			DragMove();
 		}
 
-
-
+		// Closes the window
 		private void btn_CloseClicked(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
 
+		// Minimizes the window
 		private void btn_MinClicked(object sender, RoutedEventArgs e)
 		{
 			WindowState = WindowState.Minimized;
 		}
 
+		#endregion Window controls
 
-		private void Window_ContentRendered(object sender, EventArgs e)
+		#region Encryption 
+
+		// Encrypts the app.config file
+		private void EncryptConfig()
 		{
-			MinWidth = ActualWidth;
-			MinHeight = ActualHeight;
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+			if (!config.AppSettings.SectionInformation.IsProtected)
+			{
+				config.AppSettings.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+				config.Save();
+			}
 		}
+
+		#endregion Encryption
+
 	}
 
 

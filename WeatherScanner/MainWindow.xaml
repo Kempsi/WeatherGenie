@@ -9,7 +9,6 @@
         mc:Ignorable="d"
         Title="Weather Genie" 
         WindowStyle="None"
-        ContentRendered="Window_ContentRendered"
         WindowStartupLocation="CenterScreen"
         Height="800" 
         Width="1000">
