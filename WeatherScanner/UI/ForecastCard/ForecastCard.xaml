@@ -18,67 +18,68 @@
         
         
         <Border CornerRadius="15"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"
-           Width="180" x:Name="border"
-           Height="180" Margin="10,5,5,10">
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Width="180" x:Name="border"
+                Height="180" Margin="5,5,5,5">
 
             <Border.Background >
                 <SolidColorBrush Color="#FFC0D4FF" 
-                            Opacity="0.0"/>
+                                 Opacity="0.0"/>
             </Border.Background>
 
             <StackPanel Margin="10,5,10,5">
 
                 <StackPanel Orientation="Horizontal"
-                       Margin="0,0,0,15">
+                            Margin="0,0,0,15">
 
                     <Label Content="{Binding Day}"
-                      FontSize="20"
-                      Width="50"
-                      Height="35"
-                      Foreground="White"/>
+                           FontSize="20"
+                           Width="120"
+                           Height="40"
+                           Foreground="White"/>
 
                     <Label Content="{Binding Date}"
-                      FontSize="20"
-                      Width="35"
-                      Height="35"
-                      Foreground="White"/>
+                           HorizontalContentAlignment="Center"
+                           FontSize="20"
+                           Width="40"
+                           Height="40"
+                           Foreground="White"/>
 
                 </StackPanel>
 
 
                 <Image Source="{Binding ImageSource}"
-                  Width="25"
-                  Height="25"
-                  HorizontalAlignment="Left"
-                  Margin="10,0,0,0"/>
+                       Width="35"
+                       Height="35"
+                       HorizontalAlignment="Left"
+                       Margin="10,-10,0,0"/>
 
                 <StackPanel Orientation="Horizontal"
-                       Margin="0,0,0,10">
+                            Margin="0,0,0,10">
 
                     <Label Content="{Binding TempHigh}"
-                      FontSize="25"
-                      Height="45"
-                      Width="45"
-                      Foreground="White"/>
+                           FontSize="30"
+                           Height="45"
+                           Width="55"
+                           Foreground="White"/>
 
                     <Label Content="{Binding TempLow}"
-                      FontSize="20"
-                      Height="39"
-                      Width="45"
-                      Foreground="#FFD9D9D9" 
-                      Margin="0,5,0,0"/>
+                           FontSize="25"
+                           Height="40"
+                           Width="50"
+                           Foreground="#FFD9D9D9" 
+                           Margin="0,5,0,0"/>
 
                 </StackPanel>
 
 
 
                 <Label Content="{Binding Desc}"
-                  FontSize="16"
-                  Height="35"
-                  Width="160"
-                  Foreground="White"/>
+                       FontSize="16"
+                       Height="35"
+                       Width="160"
+                       Foreground="White"/>
             </StackPanel>
 
 
