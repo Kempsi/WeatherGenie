@@ -35,7 +35,7 @@
 
                     <Label Content="{Binding Day}"
                       FontSize="20"
-                      Width="45"
+                      Width="50"
                       Height="35"
                       Foreground="White"/>
 

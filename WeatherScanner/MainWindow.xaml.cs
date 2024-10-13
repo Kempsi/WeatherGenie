@@ -15,8 +15,7 @@ namespace WeatherScanner
     /// </summary>
     public partial class MainWindow : Window
 	{
-		WeatherAPI apiCaller;
-		GeoCoderAPI geocoder;
+
 		ForecastManager forecastManager;
 
 
@@ -27,15 +26,7 @@ namespace WeatherScanner
 			PopulateForecast();
 		}
 
-		public async void GetWeather()
-		{
-			apiCaller = new WeatherAPI();
-			geocoder = new GeoCoderAPI();
-			var cords = await geocoder.GetCords("Joensuu");
 
-			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
-
-		}
 
 		// Populates 5 day forecastcards
 		private void PopulateForecast()
