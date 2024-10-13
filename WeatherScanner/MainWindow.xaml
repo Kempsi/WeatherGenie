@@ -45,7 +45,6 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="622,265,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
         </Grid>
 

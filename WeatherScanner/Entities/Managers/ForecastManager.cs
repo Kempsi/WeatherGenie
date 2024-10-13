@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace WeatherScanner.Entities.Managers
             forecastCards[0].Day = "Fri";
 			forecastCards[0].Date = 31;
 			forecastCards[0].Desc = "A bit chilly";
-			forecastCards[0].ImageSource = "F:\\Visual Studio Enterprise 2022 projektit\\Oman ajan extra tehtäviä\\WeatherScanner\\WeatherScanner\\Icons\\sunny_icon.png";
+			forecastCards[0].ImageSource = ConfigurationManager.AppSettings["SunnyIcon"];
 		}
 
 		// Updates active forecast cards
@@ -42,7 +43,6 @@ namespace WeatherScanner.Entities.Managers
 			if (activeCard != null && activeCard != newActiveCard)
 			{
 				activeCard.IsActive = false;
-				Debug.WriteLine("Kortti on nyt: " + activeCard.IsActive);
 			}
 
 			// Set the new active card
@@ -50,7 +50,7 @@ namespace WeatherScanner.Entities.Managers
 			activeCard.IsActive = true;
 		}
 
-		// Return all the cards
+		// Returns all the cards
 		public ForecastCard[] GetCards()
 		{
 			return forecastCards;
