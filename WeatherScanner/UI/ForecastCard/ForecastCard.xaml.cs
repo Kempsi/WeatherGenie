@@ -32,8 +32,8 @@ namespace WeatherScanner.UI.ForecastCard
 			}
 		}
 
-		private int tempHigh;
-		public int TempHigh
+		private string tempHigh;
+		public string TempHigh
 		{
 			get { return tempHigh; }
 			set
@@ -43,8 +43,8 @@ namespace WeatherScanner.UI.ForecastCard
 			}
 		}
 
-		private int tempLow;
-		public int TempLow
+		private string tempLow;
+		public string TempLow
 		{
 			get { return tempLow; }
 			set
@@ -65,8 +65,8 @@ namespace WeatherScanner.UI.ForecastCard
 			}
 		}
 
-		private int date;
-		public int Date
+		private string date;
+		public string Date
 		{
 			get { return date; }
 			set
@@ -114,7 +114,7 @@ namespace WeatherScanner.UI.ForecastCard
 		{
 			if (IsActive)
 			{
-				border.Background.Opacity = 0.5;
+				border.Background.Opacity = 0.3;
 			}
 			else
 			{

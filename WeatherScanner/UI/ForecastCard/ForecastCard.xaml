@@ -17,7 +17,7 @@
             
         
         
-        <Border CornerRadius="10"
+        <Border CornerRadius="15"
            VerticalAlignment="Center"
            HorizontalAlignment="Center"
            Width="180" x:Name="border"

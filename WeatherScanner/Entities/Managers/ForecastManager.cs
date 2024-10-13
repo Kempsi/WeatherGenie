@@ -21,12 +21,13 @@ namespace WeatherScanner.Entities.Managers
 		private WeatherAPI apiCaller;
 		private GeoCoderAPI geocoder;
 
+		private ForecastResponse response;
+
 		private string city = "Joensuu";
 
 		public ForecastManager()
 		{
 			forecastCards = new ForecastCard[5];
-
 
 			for (int i = 0; i < 5; i++)
 			{
@@ -35,16 +36,16 @@ namespace WeatherScanner.Entities.Managers
 
 			}
 
-			// Test data
-			forecastCards[0].TempHigh = 25;
-			forecastCards[0].TempLow = 5;
-			forecastCards[0].Day = "Fri";
-			forecastCards[0].Date = 31;
-			forecastCards[0].Desc = "A bit chilly";
-			forecastCards[0].ImageSource = ConfigurationManager.AppSettings["SunnyIcon"];
+			
 
-			GetForecastResponse();
-			PopulateCard(0);
+			SetUpForecast();
+
+		}
+
+		public async Task SetUpForecast()
+		{
+			response = await GetForecastResponse();
+			PopulateCards();
 		}
 
 		// Updates active forecast cards
@@ -65,11 +66,13 @@ namespace WeatherScanner.Entities.Managers
 		{
 			apiCaller = new WeatherAPI();
 			geocoder = new GeoCoderAPI();
+
+
 			var cords = await geocoder.GetCords(city);
 
-			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
+			response = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
 
-			return forecastResponse;
+			return response;
 
 		}
 
@@ -84,7 +87,7 @@ namespace WeatherScanner.Entities.Managers
 			return shortDay;
 		}
 
-		private int GetShortDate(DateTime currentDate, int addDay)
+		private string GetShortDate(DateTime currentDate, int addDay)
 		{
 			var dateTime = currentDate.AddDays(addDay);
 
@@ -92,23 +95,102 @@ namespace WeatherScanner.Entities.Managers
 
 			shortDate = shortDate.Remove(2);
 
-			var dayDate = int.Parse(shortDate);
-
-			return dayDate;
+			return shortDate;
 		}
 
-		private void PopulateCard(int index)
+		private string GetTempHigh(DateTime currentDate, int addDay)
+		{
+			var wantedDate = currentDate.AddDays(addDay);
+			var temps = new List<int>();
+
+			foreach (var item in response.list)
+			{
+				var itemDate = DateTime.Parse(item.dt_txt);
+
+				if (itemDate.Date == wantedDate.Date)
+				{
+					int roundedTemp = Convert.ToInt32(Math.Round(item.main.temp_max));
+					temps.Add(roundedTemp);
+				}
+			}
+
+			if (temps.Any())
+			{
+				return temps.Max().ToString() + "°";
+			}
+
+			return string.Empty;
+		}
+
+		private string GetTempLow(DateTime currentDate, int addDay)
+		{
+			var wantedDate = currentDate.AddDays(addDay);
+			var temps = new List<int>();
+		
+			foreach (var item in response.list)
+			{
+				var itemDate = DateTime.Parse(item.dt_txt);
+
+				if (itemDate.Date == wantedDate.Date)
+				{	
+					int roundedTemp = Convert.ToInt32(Math.Round(item.main.temp_min));	
+					temps.Add(roundedTemp);
+				}
+			}
+	
+			if (temps.Any())
+			{
+				return temps.Min().ToString() + "°";
+			}
+
+			return string.Empty;
+		}
+
+		private string GetDescription(DateTime currentDate, int addDay)
+		{
+			var wantedDate = currentDate.AddDays(addDay);
+			var descriptions = new List<string>();
+
+			foreach (var item in response.list)
+			{
+				var itemDate = DateTime.Parse(item.dt_txt);
+
+				if (itemDate.Date == wantedDate.Date)
+				{
+					foreach (var weather in item.weather)
+					{
+						descriptions.Add(weather.description);
+						Debug.WriteLine(weather.description);
+					}
+				}
+			}
+
+			if (wantedDate.Day == DateTime.Now.Day)
+			{
+				var closestDesc = descriptions[0];
+				closestDesc = char.ToUpper(closestDesc[0]) + closestDesc.Substring(1);
+				return closestDesc;
+			}
+
+			else
+			{
+				var mostFrequent = descriptions.GroupBy(x => x).OrderByDescending(x => x.Key).FirstOrDefault()?.Key;
+				mostFrequent = char.ToUpper(mostFrequent[0]) + mostFrequent.Substring(1);
+				return mostFrequent;
+			}
+		}
+
+		private void PopulateCards()
 		{
 			
-
 			for (int i = 0; i < forecastCards.Length; i++)
 			{
 				forecastCards[i].Day = GetShortDayOfTheWeek(DateTime.Now, i);
 				forecastCards[i].Date = GetShortDate(DateTime.Now, i);
+				forecastCards[i].TempHigh = GetTempHigh(DateTime.Now, i);
+				forecastCards[i].TempLow = GetTempLow(DateTime.Now, i);
+				forecastCards[i].Desc = GetDescription(DateTime.Now, i);
 			}
-
-
-
 
 		}
 
