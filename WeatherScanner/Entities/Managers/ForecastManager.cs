@@ -103,7 +103,7 @@ namespace WeatherScanner.Entities.Managers
 				forecastCards[i].TempHigh = GetTempHigh(DateTime.Now, i);
 				forecastCards[i].TempLow = GetTempLow(DateTime.Now, i);
 				forecastCards[i].Desc = GetDescription(DateTime.Now, i);
-				forecastCards[i].ImageSource = ConfigurationManager.AppSettings["SunnyIcon"]; // Placeholder
+				forecastCards[i].ImageSource = ConfigurationManager.AppSettings["ClearIcon"]; // Placeholder
 			}
 		}
 
