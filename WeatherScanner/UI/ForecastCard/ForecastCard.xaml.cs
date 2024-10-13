@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using WeatherScanner.Entities.Managers;
 
 namespace WeatherScanner.UI.ForecastCard
 {
@@ -11,6 +13,8 @@ namespace WeatherScanner.UI.ForecastCard
 	public partial class ForecastCard : UserControl, INotifyPropertyChanged
 	{
 
+		public ForecastManager manager;
+	
 		public ForecastCard()
 		{
 			InitializeComponent();
@@ -93,7 +97,7 @@ namespace WeatherScanner.UI.ForecastCard
 			{
 				isActive = value;
 				OnPropertyChanged();
-				SetAsActive();
+				ChangeActiveOpacity();
 			}
 		}
 
@@ -105,15 +109,13 @@ namespace WeatherScanner.UI.ForecastCard
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 		}
 
-		// Changes background depending on active state
-		private void SetAsActive()
+		// Changes the visual look of an active card
+		public void ChangeActiveOpacity()
 		{
-
-			if (isActive)
+			if (IsActive)
 			{
 				border.Background.Opacity = 0.5;
 			}
-
 			else
 			{
 				border.Background.Opacity = 0.0;
@@ -121,24 +123,10 @@ namespace WeatherScanner.UI.ForecastCard
 		}
 
 
-		// When clicked, invokes button event and sets isActive state
-		private void btn_ForecastCardClicked(object sender, RoutedEventArgs e)
+		// When clicked, calls for managers SetActiveCard
+		public void btn_ForecastCardClicked(object sender, RoutedEventArgs e)
 		{
-			ButtonClick?.Invoke(this, e);
-			 
-			if (isActive)
-			{
-				isActive= false;
-				SetAsActive();
-				return;
-			}
-
-			if (!isActive)
-			{
-				isActive = true;
-				SetAsActive();
-				return;
-			}
+			manager.SetActiveCard(this);
 		}
 	}
 

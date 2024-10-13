@@ -45,6 +45,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="622,265,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
         </Grid>
 
@@ -120,13 +121,9 @@
         <!-- Forecast cards -->
         <StackPanel Orientation="Horizontal"  
                     HorizontalAlignment="Center"
-                    Grid.Row="3">
+                    Grid.Row="3"
+                    x:Name="sp_forecastcards">
 
-            <UI:ForecastCard IsActive="True" x:Name="fore" ImageSource="pack://application:,,,/WeatherScanner;component/Icons/sunny_icon.png"/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard/>
-            <UI:ForecastCard Margin="0,0,5,0"/>
 
         </StackPanel>
 

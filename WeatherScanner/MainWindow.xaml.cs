@@ -1,7 +1,9 @@
 ﻿using System.Configuration;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WeatherScanner.Entities.Forecast;
+using WeatherScanner.Entities.Managers;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.Entities.WeatherModels;
 using WeatherScanner.UI.ForecastCard;
@@ -15,12 +17,14 @@ namespace WeatherScanner
 	{
 		WeatherAPI apiCaller;
 		GeoCoderAPI geocoder;
+		ForecastManager forecastManager;
 
 
 		public MainWindow()
 		{
 			InitializeComponent();
-			EncryptConfig();	
+			EncryptConfig();
+			PopulateForecast();
 		}
 
 		public async void GetWeather()
@@ -29,9 +33,25 @@ namespace WeatherScanner
 			geocoder = new GeoCoderAPI();
 			var cords = await geocoder.GetCords("Joensuu");
 
-			// IT WORKS
 			var forecastResponse = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
 
+		}
+
+		// Populates 5 day forecastcards
+		private void PopulateForecast()
+		{
+			forecastManager = new ForecastManager();
+
+			for (int i = 0; i < forecastManager.forecastCards.Length; i++)
+			{
+				ForecastCard card = forecastManager.forecastCards[i];
+
+				card.manager = forecastManager;
+
+				card.DataContext = forecastManager.forecastCards[i];
+
+				sp_forecastcards.Children.Add(card);
+			}
 		}
 
 
@@ -72,6 +92,7 @@ namespace WeatherScanner
 		}
 
 		#endregion Encryption
+
 
 	}
 
