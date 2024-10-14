@@ -13,7 +13,7 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center">
         <Grid.Background>
-            <SolidColorBrush Color="Transparent" Opacity="0.2"/>
+            <SolidColorBrush Color="Transparent"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -31,13 +31,13 @@
                     VerticalAlignment="Center">
 
 
-            <Label Content="Joensuu, "
+            <Label Content="{Binding City}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="36"
                    Foreground="White"/>
 
-            <Label Content="FI"
+            <Label Content="{Binding Country}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="36"
@@ -50,25 +50,25 @@
                     Grid.Row="1">
 
 
-            <Image Source="F:\Visual Studio Enterprise 2022 projektit\Oman ajan extra tehtäviä\WeatherScanner\WeatherScanner\Icons\Weather icons\few_clouds_icon.png"
+            <Image Source="{Binding ImageSource}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
 
-            <Label Content="37°"
+            <Label Content="{Binding Temp}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="110"
                    Foreground="White"/>
         </StackPanel>
 
-        <Label Content="Scattered clouds"
+        <Label Content="{Binding Desc}"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="36"
                Grid.Row="2"
                Foreground="White"/>
 
-        <Label Content="Updated as of 14.10.2024 18:00"
+        <Label Content="{Binding Date}"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="18"
@@ -80,21 +80,21 @@
                     VerticalAlignment="Center"
                     Grid.Row="4">
 
-            <Label Content="Feels like -46°"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="18"
-                   Grid.Row="3"
-                   Foreground="White"/>
-            
-            <Label Content="Wind 20km/h"
+            <Label Content="{Binding FeelsLike}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
                    Grid.Row="3"
                    Foreground="White"/>
 
-            <Label Content="Visibility 10km"
+            <Label Content="{Binding WindSpeed}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="18"
+                   Grid.Row="3"
+                   Foreground="White"/>
+
+            <Label Content="{Binding MyVisibility}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
@@ -107,7 +107,7 @@
                     VerticalAlignment="Top"
                     Grid.Row="5">
 
-            <Label Content="Timezone +03:00 UTC"
+            <Label Content="{Binding TimeZone}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
@@ -115,7 +115,7 @@
                    Margin="0,0,10,0"
                    Foreground="White" />
 
-            <Label Content="Humidity 100%"
+            <Label Content="{Binding Humidity}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
@@ -123,7 +123,7 @@
                    Margin="0,0,10,0"
                    Foreground="White"/>
                  
-            <Label Content="Sunset 18:56"
+            <Label Content="{Binding Sunset}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
@@ -131,13 +131,14 @@
                    Margin="0,0,10,0"
                    Foreground="White"/>
 
-            <Label Content="Sunrise 06:24"
+            <Label Content="{Binding Sunrise}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
                    Grid.Row="3"
                    Margin="0,0,10,0"
                    Foreground="White"/>
+            
         </StackPanel>
 
 

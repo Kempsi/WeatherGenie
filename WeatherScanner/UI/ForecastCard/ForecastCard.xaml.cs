@@ -79,6 +79,18 @@ namespace WeatherScanner.UI.ForecastCard
 		}
 
 
+		private string fullDate;
+		public string FullDate
+		{
+			get { return fullDate; }
+			set
+			{
+				fullDate = value;
+				OnPropertyChanged();
+			}
+		}
+
+
 		private string desc;
 		public string Desc
 		{

@@ -4,34 +4,84 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Managers;
+using WeatherScanner.Entities.Models;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.Entities.WeatherModels;
 using WeatherScanner.UI.ForecastCard;
+using WeatherScanner.UI.SelectedDayPanel;
 
 namespace WeatherScanner
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
 	{
 
-		ForecastManager forecastManager;
+		ForecastManager forecastManager = new ForecastManager();
+		SelectedDayManager selectedDayManager;
+
+		private ForecastResponse Response = new ForecastResponse();
+		private ForecastCard[] AllCards = new ForecastCard[5];
+		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
+		private WeatherAPI WeatherAPI = new WeatherAPI();
+
+		private string city = "Joensuu";
+		private CityCords cityCords;
 
 
 		public MainWindow()
 		{
 			InitializeComponent();
 			EncryptConfig();
-			PopulateForecast();
+			InitializeAsync();
+
+			forecastManager.ActiveCardChanged += OnActiveCardChanged;
 		}
 
 
+		#region Async and API requests
 
-		// Populates 5 day forecastcards
-		private void PopulateForecast()
+		// Waits for all of the methods to finish loading data 
+		private async Task InitializeAsync()
 		{
-			forecastManager = new ForecastManager();
+			await RequestForAPIResponse();
+			forecastManager.SetCity(city);
+			await PopulateForecast();
+
+			AllCards = forecastManager.GetCards();
+
+			await PopulateDayPanel(Response, AllCards);
+		}
+
+		// Makes a separate request for selected day panel
+		private async Task RequestForAPIResponse()
+		{
+			cityCords = await GeoCoderAPI.GetCords(city);
+			Response = await WeatherAPI.GetForecast(cityCords.Lat, cityCords.Lon);
+		}
+
+		#endregion Async
+
+		#region Day panel population
+
+		// Populates selected day panel with data
+		private async Task PopulateDayPanel(ForecastResponse response, ForecastCard[] allCards)
+		{
+			selectedDayManager = new SelectedDayManager(response, allCards);
+			selectedDayManager.SetCity(city);
+			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
+
+		}
+
+		#endregion Day panel population
+
+		#region Forecast card data population
+
+		// Populates forecastcards with data
+		private async Task PopulateForecast()
+		{
+			await forecastManager.InitializeForecast();
 
 			for (int i = 0; i < forecastManager.forecastCards.Length; i++)
 			{
@@ -45,6 +95,7 @@ namespace WeatherScanner
 			}
 		}
 
+		#endregion Forecast card data population
 
 		#region Window controls
 
@@ -83,6 +134,19 @@ namespace WeatherScanner
 		}
 
 		#endregion Encryption
+
+		#region Click listener
+
+		// On click, fires off UpdateActiveCard method and updates 
+		private void OnActiveCardChanged(ForecastCard obj)
+		{
+			selectedDayManager.UpdateActiveCard(forecastManager.GetActiveCard());
+			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
+		}
+
+		#endregion Click listener
+
+	
 
 
 	}

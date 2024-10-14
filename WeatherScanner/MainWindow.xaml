@@ -130,14 +130,15 @@
         <!-- Daily label -->
         <Label Content="Daily"
                Foreground="White"
-               FontSize="30"
+               FontSize="36"
                Margin="30,0,0,0"
                HorizontalAlignment="Left"
                VerticalAlignment="Bottom"
                Grid.Row="2"/>
 
         <!-- Selected day panel -->
-        <UIUpper:SelectedDayPanel Grid.Row="2"/>
+        <UIUpper:SelectedDayPanel Grid.Row="2"
+                                  x:Name="selectedDayPanel"/>
 
     </Grid>
 </Window>

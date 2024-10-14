@@ -16,7 +16,9 @@ namespace WeatherScanner.Entities.Managers
 
 		private ForecastResponse response;
 
-		private string city = "Malaga";
+		// Idk, if i set this to nothing, it dont work
+		// So now this stays as it is :)
+		private string city = "New York";
 
 		public ForecastManager()
 		{
@@ -57,6 +59,8 @@ namespace WeatherScanner.Entities.Managers
 		#region Active card highlighting
 
 
+		public event Action<ForecastCard> ActiveCardChanged;
+
 		// Updates active forecast cards
 		public void SetActiveCard(ForecastCard newActiveCard)
 		{
@@ -71,6 +75,8 @@ namespace WeatherScanner.Entities.Managers
 			{		
 				activeCard = newActiveCard;
 				activeCard.IsActive = true;
+
+				ActiveCardChanged?.Invoke(activeCard);
 			}
 
 
@@ -107,6 +113,8 @@ namespace WeatherScanner.Entities.Managers
 				forecastCards[i].TempLow = GetTempLow(DateTime.Now, i);
 				forecastCards[i].Desc = GetDescription(DateTime.Now, i);
 				forecastCards[i].ImageSource = GetMatchingWeatherIcon(forecastCards[i]);
+
+				forecastCards[i].FullDate = GetFullDate(DateTime.Now, i);
 			}
 		}
 
@@ -116,6 +124,7 @@ namespace WeatherScanner.Entities.Managers
 		{
 			// Date, we want the day of the week from
 			var wantedDate = currentDate.AddDays(addDay);
+
 
 			// Shorten it and return it
 			return wantedDate.DayOfWeek.ToString();
@@ -133,6 +142,26 @@ namespace WeatherScanner.Entities.Managers
 
 			// Return only the first two characters
 			return shortDate.Remove(2);
+
+		}
+
+		// Gets the shortened date from the wanted date
+		private string GetFullDate(DateTime currentDate, int addDay)
+		{
+			// Date, we want the day of the week from
+			var wantedDate = currentDate.AddDays(addDay);
+
+            foreach (var item in response.list)
+            {
+				DateTime date = DateTime.Parse(item.dt_txt);
+
+				if (date == wantedDate)
+				{
+					return date.ToString();
+				}
+            }
+
+            return "Error";
 
 		}
 
@@ -282,7 +311,33 @@ namespace WeatherScanner.Entities.Managers
 			return forecastCards;
 		}
 
+		public ForecastCard GetActiveCard()
+		{
+			return activeCard;
+		}
+
+		public ForecastResponse GetResponse()
+		{
+			return response;
+		}
+
+		public void SetCity(string city)
+		{
+			this.city = city;  // Tallennetaan kaupunki ForecastManageriin
+		}
+
+
 		#endregion Other
+
+
+
+
+
+
+
+
+
+
 
 
 	}

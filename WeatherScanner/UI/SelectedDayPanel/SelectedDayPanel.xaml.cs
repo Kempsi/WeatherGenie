@@ -41,6 +41,17 @@ namespace WeatherScanner.UI.SelectedDayPanel
 			}
 		}
 
+		private string desc;
+		public string Desc
+		{
+			get { return desc; }
+			set
+			{
+				desc = value;
+				OnPropertyChanged();
+			}
+		}
+
 		private string temp;
 		public string Temp
 		{
@@ -86,13 +97,13 @@ namespace WeatherScanner.UI.SelectedDayPanel
 			}
 		}
 
-		private string visibility;
-		public string Visibility
+		private string myVisibility;
+		public string MyVisibility
 		{
-			get { return visibility; }
+			get { return myVisibility; }
 			set
 			{
-				visibility = value;
+				myVisibility = value;
 				OnPropertyChanged();
 			}
 		}
@@ -165,8 +176,6 @@ namespace WeatherScanner.UI.SelectedDayPanel
 
 
 		#endregion Properties
-
-
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
