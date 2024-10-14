@@ -79,9 +79,7 @@ namespace WeatherScanner.Entities.Managers
 				ActiveCardChanged?.Invoke(activeCard);
 			}
 
-
 		}
-
 
 		#endregion Active card highlighting
 
@@ -151,17 +149,7 @@ namespace WeatherScanner.Entities.Managers
 			// Date, we want the day of the week from
 			var wantedDate = currentDate.AddDays(addDay);
 
-            foreach (var item in response.list)
-            {
-				DateTime date = DateTime.Parse(item.dt_txt);
-
-				if (date == wantedDate)
-				{
-					return date.ToString();
-				}
-            }
-
-            return "Error";
+			return wantedDate.ToString();
 
 		}
 
@@ -311,21 +299,23 @@ namespace WeatherScanner.Entities.Managers
 			return forecastCards;
 		}
 
+		// Returns the active card
 		public ForecastCard GetActiveCard()
 		{
 			return activeCard;
 		}
 
+		// Returns the response
 		public ForecastResponse GetResponse()
 		{
 			return response;
 		}
 
+		// Sets the city
 		public void SetCity(string city)
 		{
-			this.city = city;  // Tallennetaan kaupunki ForecastManageriin
+			this.city = city;
 		}
-
 
 		#endregion Other
 

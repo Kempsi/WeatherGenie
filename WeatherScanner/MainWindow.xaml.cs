@@ -21,13 +21,19 @@ namespace WeatherScanner
 		ForecastManager forecastManager = new ForecastManager();
 		SelectedDayManager selectedDayManager;
 
+
+
+
 		private ForecastResponse Response = new ForecastResponse();
 		private ForecastCard[] AllCards = new ForecastCard[5];
 		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
 		private WeatherAPI WeatherAPI = new WeatherAPI();
 
+
 		private string city = "Joensuu";
 		private CityCords cityCords;
+
+
 
 
 		public MainWindow()
@@ -36,34 +42,22 @@ namespace WeatherScanner
 			EncryptConfig();
 			InitializeAsync();
 
+
+
+
+
 			forecastManager.ActiveCardChanged += OnActiveCardChanged;
+
+
+
 		}
 
-
-		#region Async and API requests
-
-		// Waits for all of the methods to finish loading data 
-		private async Task InitializeAsync()
+		// On click, fires off UpdateActiveCard method and updates 
+		private void OnActiveCardChanged(ForecastCard obj)
 		{
-			await RequestForAPIResponse();
-			forecastManager.SetCity(city);
-			await PopulateForecast();
-
-			AllCards = forecastManager.GetCards();
-
-			await PopulateDayPanel(Response, AllCards);
+			selectedDayManager.UpdateActiveCard(forecastManager.GetActiveCard());
+			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
 		}
-
-		// Makes a separate request for selected day panel
-		private async Task RequestForAPIResponse()
-		{
-			cityCords = await GeoCoderAPI.GetCords(city);
-			Response = await WeatherAPI.GetForecast(cityCords.Lat, cityCords.Lon);
-		}
-
-		#endregion Async
-
-		#region Day panel population
 
 		// Populates selected day panel with data
 		private async Task PopulateDayPanel(ForecastResponse response, ForecastCard[] allCards)
@@ -74,7 +68,7 @@ namespace WeatherScanner
 
 		}
 
-		#endregion Day panel population
+
 
 		#region Forecast card data population
 
@@ -135,18 +129,28 @@ namespace WeatherScanner
 
 		#endregion Encryption
 
-		#region Click listener
+		#region Async and API requests
 
-		// On click, fires off UpdateActiveCard method and updates 
-		private void OnActiveCardChanged(ForecastCard obj)
+		// Waits for all of the methods to finish loading data 
+		private async Task InitializeAsync()
 		{
-			selectedDayManager.UpdateActiveCard(forecastManager.GetActiveCard());
-			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
+			await RequestForAPIResponse();
+			forecastManager.SetCity(city);
+			await PopulateForecast();
+
+			AllCards = forecastManager.GetCards();
+
+			await PopulateDayPanel(Response, AllCards);
 		}
 
-		#endregion Click listener
+		// Makes a separate request for selected day panel
+		private async Task RequestForAPIResponse()
+		{
+			cityCords = await GeoCoderAPI.GetCords(city);
+			Response = await WeatherAPI.GetForecast(cityCords.Lat, cityCords.Lon);
+		}
 
-	
+		#endregion Async
 
 
 	}
