@@ -146,10 +146,18 @@ namespace WeatherScanner.Entities.Managers
 		// Gets the shortened date from the wanted date
 		private string GetFullDate(DateTime currentDate, int addDay)
 		{
-			// Date, we want the day of the week from
 			var wantedDate = currentDate.AddDays(addDay);
 
-			return wantedDate.ToString();
+			foreach (var item in response.list)
+			{
+				DateTime date = DateTime.Parse(item.dt_txt);
+
+				if (date.Date == wantedDate.Date)
+				{
+					return date.ToString("dd:MM:yyyy HH:mm");
+				}
+			}
+			return "Error";
 
 		}
 

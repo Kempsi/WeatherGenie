@@ -64,7 +64,7 @@ namespace WeatherScanner.Entities.Managers
 			SelectedDayPanel.Temp = GetTemp();
 			SelectedDayPanel.ImageSource = GetIcon();
 			SelectedDayPanel.Desc = GetDesc();
-			SelectedDayPanel.Date = string.Empty;
+			SelectedDayPanel.Date = GetUpdatedDate();
 			SelectedDayPanel.FeelsLike = string.Empty;
 			SelectedDayPanel.WindSpeed = string.Empty;
 			SelectedDayPanel.MyVisibility = string.Empty;
