@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BackgroundImages\BrokenClouds.jpg" />
+    <None Remove="BackgroundImages\clear_bg.jpg" />
     <None Remove="BackgroundImages\cloudy.jpg" />
     <None Remove="Icons\close_Act_Icon.png" />
     <None Remove="Icons\close_Icon.png" />
@@ -34,6 +36,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="BackgroundImages\BrokenClouds.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="BackgroundImages\clear_bg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="BackgroundImages\cloudy.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

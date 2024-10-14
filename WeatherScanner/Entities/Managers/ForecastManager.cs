@@ -20,6 +20,7 @@ namespace WeatherScanner.Entities.Managers
 
 		private WeatherAPI apiCaller;
 		private GeoCoderAPI geocoder;
+		private WeatherIconManager iconManager = new WeatherIconManager();
 
 		private ForecastResponse response;
 
@@ -29,6 +30,8 @@ namespace WeatherScanner.Entities.Managers
 		{
 			InitializeForecastCards();
 			InitializeForecast();
+
+			SetActiveCard(forecastCards[0]);
 		}
 
 
@@ -43,6 +46,8 @@ namespace WeatherScanner.Entities.Managers
 				ForecastCard card = new ForecastCard();
 				forecastCards[i] = card;
 			}
+
+			
 		}
 
 
@@ -68,9 +73,14 @@ namespace WeatherScanner.Entities.Managers
 				activeCard.IsActive = false;
 			}
 
-			// Set the new active card
-			activeCard = newActiveCard;
-			activeCard.IsActive = true;
+			// If new card is not active
+			if (!newActiveCard.IsActive)
+			{		
+				activeCard = newActiveCard;
+				activeCard.IsActive = true;
+			}
+
+
 		}
 
 
@@ -103,7 +113,7 @@ namespace WeatherScanner.Entities.Managers
 				forecastCards[i].TempHigh = GetTempHigh(DateTime.Now, i);
 				forecastCards[i].TempLow = GetTempLow(DateTime.Now, i);
 				forecastCards[i].Desc = GetDescription(DateTime.Now, i);
-				forecastCards[i].ImageSource = ConfigurationManager.AppSettings["ClearIcon"]; // Placeholder
+				forecastCards[i].ImageSource = GetMatchingWeatherIcon(forecastCards[i]);
 			}
 		}
 
@@ -253,15 +263,23 @@ namespace WeatherScanner.Entities.Managers
 
 		#region Weather icon status logic
 
-		private void SetCorrectWeatherIcon()
+		// Returns correct matching weather icon patch, depending on weather description
+		private string GetMatchingWeatherIcon(ForecastCard card)
 		{
-            foreach (var item in forecastCards)
+			var weatherIcons  = iconManager.GetWeatherIcons();
+
+            foreach (var icon in weatherIcons)
             {
-                
+                if (icon.Key == card.Desc.ToLower())
+				{
+					return icon.Value;
+				}
             }
+
+			return "Error";
         }
 
-		#region Weather icon status logic
+		#endregion Weather icon status logic
 
 		#region Other
 

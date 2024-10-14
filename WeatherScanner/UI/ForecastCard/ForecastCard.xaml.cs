@@ -128,6 +128,8 @@ namespace WeatherScanner.UI.ForecastCard
 		{
 			manager.SetActiveCard(this);
 		}
+
+
 	}
 
 
