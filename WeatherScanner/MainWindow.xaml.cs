@@ -17,23 +17,16 @@ namespace WeatherScanner
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-
 		ForecastManager forecastManager = new ForecastManager();
 		SelectedDayManager selectedDayManager;
-
-
-
 
 		private ForecastResponse Response = new ForecastResponse();
 		private ForecastCard[] AllCards = new ForecastCard[5];
 		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
 		private WeatherAPI WeatherAPI = new WeatherAPI();
 
-
 		private string city = "Joensuu";
 		private CityCords cityCords;
-
-
 
 
 		public MainWindow()
@@ -42,15 +35,11 @@ namespace WeatherScanner
 			EncryptConfig();
 			InitializeAsync();
 
-
-
-
-
 			forecastManager.ActiveCardChanged += OnActiveCardChanged;
 
-
-
 		}
+
+		#region Click listener
 
 		// On click, fires off UpdateActiveCard method and updates 
 		private void OnActiveCardChanged(ForecastCard obj)
@@ -58,6 +47,10 @@ namespace WeatherScanner
 			selectedDayManager.UpdateActiveCard(forecastManager.GetActiveCard());
 			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
 		}
+
+		#endregion Click listener
+
+		#region Selected day panel population
 
 		// Populates selected day panel with data
 		private async Task PopulateDayPanel(ForecastResponse response, ForecastCard[] allCards)
@@ -68,7 +61,7 @@ namespace WeatherScanner
 
 		}
 
-
+		#endregion Selected day panel population
 
 		#region Forecast card data population
 
