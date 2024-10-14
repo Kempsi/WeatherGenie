@@ -87,7 +87,7 @@ namespace WeatherScanner.Entities.Managers
 
 			var cords = await geocoder.GetCords(city);
 
-			response = await apiCaller.Get5DayWeather(cords.Lat, cords.Lon);
+			response = await apiCaller.GetForecast(cords.Lat, cords.Lon);
 
 			return response;
 		}
@@ -250,6 +250,18 @@ namespace WeatherScanner.Entities.Managers
 
 
 		#endregion Data fetching and binding
+
+		#region Weather icon status logic
+
+		private void SetCorrectWeatherIcon()
+		{
+            foreach (var item in forecastCards)
+            {
+                
+            }
+        }
+
+		#region Weather icon status logic
 
 		#region Other
 

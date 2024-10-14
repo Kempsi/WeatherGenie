@@ -17,79 +17,44 @@ namespace WeatherScanner.Entities.Services
             ApiKey = ConfigurationManager.AppSettings["ApiKey"];
 		}
 
-        // Makes a API call to get currents days weather info
-        private async Task<string> CallForCurrentWeather(string city)
-        {
-            string url = $"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={ApiKey}&units=metric";
+		#region API requests
 
-            using HttpClient client = new HttpClient();
-            var result = await client.GetAsync(url);
+		// Makes an API call to get next 5 days weather info
+		private async Task<string> RequestForecast(double lat, double lon)
+		{
+			string url = $"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={ApiKey}&units=metric";
 
-            if (result.IsSuccessStatusCode)
-            {
-                var content = await result.Content.ReadAsStringAsync();
-                return content;
-            }
+			using HttpClient client = new HttpClient();
+			var result = await client.GetAsync(url);
 
-            return "Error";
-        }
+			if (result.IsSuccessStatusCode)
+			{
+				var content = await result.Content.ReadAsStringAsync();
+				return content;
+			}
 
-        // Makes a API call to get next 5 days weather info
-        private async Task<string> CallFor5DayWeather(double lat, double lon)
-        {
-            string url = $"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={ApiKey}&units=metric";
+			return "Error";
+		}
 
-            using HttpClient client = new HttpClient();
-            var result = await client.GetAsync(url);
+		// Returns json response as a ForecastResponse class
+		public async Task<ForecastResponse> GetForecast(double lat, double lon)
+		{
+			var json = await RequestForecast(lat, lon);
+			Console.WriteLine(json);
 
-            if (result.IsSuccessStatusCode)
-            {
-                var content = await result.Content.ReadAsStringAsync();
-                return content;
-            }
+			if (json == "Error")
+			{
+				return null;
+			}
 
-            return "Error";
-        }
+			ForecastResponse forecastResponse = JsonConvert.DeserializeObject<ForecastResponse>(json);
 
-        // Gets current daily weather and returns it as a WeatherData class
-        public async Task<WeatherData> GetCurrentWeather(string city)
-        {
-            var json = await CallForCurrentWeather(city);
+			return forecastResponse;
+		}
 
-            if (json == "Error")
-            {
-                return null;
-            }
-
-            var data = JObject.Parse(json);
-            var weatherData = new WeatherData()
-            {
-                City = (string)data["name"],
-                Temp = (double)data["main"]["temp"],
-                TempFeelsLike = (double)data["main"]["feels_like"],
-                Main = (string)data["weather"][0]["main"],
-                Description = (string)data["weather"][0]["description"]
-            };
-
-            return weatherData;
-        }
-
-        public async Task<ForecastResponse> Get5DayWeather(double lat, double lon)
-        {
-            var json = await CallFor5DayWeather(lat, lon);
-            Console.WriteLine(json);
-
-            if (json == "Error")
-            {
-                return null;
-            }
-
-            ForecastResponse forecastResponse = JsonConvert.DeserializeObject<ForecastResponse>(json);
-
-            return forecastResponse;
-        }
+		#endregion API requests
 
 
 
-    }
+	}
 }
