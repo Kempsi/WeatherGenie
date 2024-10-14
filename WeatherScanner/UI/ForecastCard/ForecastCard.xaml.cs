@@ -21,6 +21,8 @@ namespace WeatherScanner.UI.ForecastCard
 			DataContext = this;
 		}
 
+		#region Properties
+
 		private string imageSource;
 		public string ImageSource
 		{
@@ -101,13 +103,26 @@ namespace WeatherScanner.UI.ForecastCard
 			}
 		}
 
+		#endregion Properties
+
+		#region Event handlers
+
 		public event RoutedEventHandler ButtonClick;
 		public event PropertyChangedEventHandler? PropertyChanged;
+
+		#endregion Event handlers
+
+		#region Property changed
 
 		private void OnPropertyChanged([CallerMemberName] string propName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 		}
+
+
+		#endregion Property changed
+
+		
 
 		// Changes the visual look of an active card
 		public void ChangeActiveOpacity()

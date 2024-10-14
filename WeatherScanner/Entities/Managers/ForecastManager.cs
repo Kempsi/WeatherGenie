@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherScanner.Entities.Forecast;
+﻿using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.UI.ForecastCard;
 
@@ -24,13 +16,14 @@ namespace WeatherScanner.Entities.Managers
 
 		private ForecastResponse response;
 
-		private string city = "Joensuu";
+		private string city = "Malaga";
 
 		public ForecastManager()
 		{
 			InitializeForecastCards();
 			InitializeForecast();
 
+			// Set the first card as an active card
 			SetActiveCard(forecastCards[0]);
 		}
 

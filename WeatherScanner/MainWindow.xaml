@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherScanner"
         xmlns:UI="clr-namespace:WeatherScanner.UI.ForecastCard" 
-        xmlns:WindowControls="clr-namespace:GalleryApp.UserControls"
+        xmlns:WindowControls="clr-namespace:GalleryApp.UserControls" 
+        xmlns:UIUpper="clr-namespace:WeatherScanner.UI.SelectedDayPanel"
         mc:Ignorable="d"
         Title="Weather Genie" 
         WindowStyle="None"
@@ -65,7 +66,7 @@
                    HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center"
                    IsHitTestVisible="False"
-                   FontSize="25"
+                   FontSize="20"
                    Margin="0,0,872,0"/>
 
 
@@ -125,6 +126,18 @@
 
 
         </StackPanel>
+        
+        <!-- Daily label -->
+        <Label Content="Daily"
+               Foreground="White"
+               FontSize="30"
+               Margin="30,0,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Grid.Row="2"/>
+
+        <!-- Selected day panel -->
+        <UIUpper:SelectedDayPanel Grid.Row="2"/>
 
     </Grid>
 </Window>
