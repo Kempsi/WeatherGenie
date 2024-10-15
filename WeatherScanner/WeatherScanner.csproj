@@ -25,10 +25,13 @@
     <None Remove="Icons\Weather icons\clear_sky_icon.png" />
     <None Remove="Icons\Weather icons\few_clouds_icon.png" />
     <None Remove="Icons\Weather icons\mist_icon.png" />
+    <None Remove="Icons\Weather icons\night_icon.png" />
     <None Remove="Icons\Weather icons\overcast_clouds_icon.png" />
     <None Remove="Icons\Weather icons\rain_icon.png" />
+    <None Remove="Icons\Weather icons\rain_night_icon.png" />
     <None Remove="Icons\Weather icons\scattered_clouds_icon.png" />
     <None Remove="Icons\Weather icons\shower_rain_icon.png" />
+    <None Remove="Icons\Weather icons\shower_rain_night_icon.png" />
     <None Remove="Icons\Weather icons\snow_icon.png" />
     <None Remove="Icons\Weather icons\thunderstorm_icon.png" />
   </ItemGroup>
@@ -47,28 +50,28 @@
     <Resource Include="BackgroundImages\cloudy.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_active_blue_icon.png">
+    <Resource Include="Icons\UI icons\close_active_blue_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_active_Icon.png">
+    <Resource Include="Icons\UI icons\close_active_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_icon.png">
+    <Resource Include="Icons\UI icons\close_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_white_icon.png">
+    <Resource Include="Icons\UI icons\close_white_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\min_active_Icon.png">
+    <Resource Include="Icons\UI icons\min_active_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\min_icon.png">
+    <Resource Include="Icons\UI icons\min_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\search_active_icon.png">
+    <Resource Include="Icons\UI icons\search_active_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\search_icon.png">
+    <Resource Include="Icons\UI icons\search_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\broken_clouds_icon.png">
@@ -83,16 +86,25 @@
     <Resource Include="Icons\Weather icons\mist_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Icons\Weather icons\night_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Icons\Weather icons\overcast_clouds_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\rain_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Icons\Weather icons\rain_night_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Icons\Weather icons\scattered_clouds_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\shower_rain_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Weather icons\shower_rain_night_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\snow_icon.png">

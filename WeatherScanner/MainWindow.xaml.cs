@@ -26,7 +26,7 @@ namespace WeatherScanner
 		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
 		private WeatherAPI WeatherAPI = new WeatherAPI();
 
-		private string city = "Helsinki";
+		private string city = "Joensuu";
 		private CityCords cityCords;
 
 
@@ -168,7 +168,16 @@ namespace WeatherScanner
 			}
 		}
 
+		private void btn_ResetSearchClicked(object sender, RoutedEventArgs e)
+		{
+			if (!string.IsNullOrEmpty(txt_Search.Text))
+			{
+				txt_Search.Text = string.Empty;
+			}
+		}
+
 		#endregion UI BUttons
+
 
 	}
 

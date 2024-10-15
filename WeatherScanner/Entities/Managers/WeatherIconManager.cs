@@ -86,6 +86,10 @@ namespace WeatherScanner.Entities.Managers
 				{"broken clouds", ConfigurationManager.AppSettings["BrokenCloudsIcon"] },
 				{"overcast clouds", ConfigurationManager.AppSettings["OvercastCloudsIcon"] },
 
+				// Night
+				{"night", ConfigurationManager.AppSettings["NightIcon"] },
+				{"nightRain", ConfigurationManager.AppSettings["NightRainIcon"] },
+				{"nightShowerRain", ConfigurationManager.AppSettings["NightShowerRainIcon"] }
 
 			};
 
