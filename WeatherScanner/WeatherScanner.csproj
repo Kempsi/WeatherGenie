@@ -14,11 +14,10 @@
     <None Remove="BackgroundImages\cloudy.jpg" />
     <None Remove="Icons\close_Act_Icon.png" />
     <None Remove="Icons\close_Icon.png" />
-    <None Remove="Icons\max_Act_Icon.png" />
-    <None Remove="Icons\max_Icon.png" />
     <None Remove="Icons\min_Act_Icon.png" />
     <None Remove="Icons\min_Icon.png" />
-    <None Remove="Icons\refresh_icon.png" />
+    <None Remove="Icons\search_active_icon.png" />
+    <None Remove="Icons\search_icon.png" />
     <None Remove="Icons\Weather icons\broken_clouds_icon.png" />
     <None Remove="Icons\Weather icons\clear_sky_icon.png" />
     <None Remove="Icons\Weather icons\few_clouds_icon.png" />
@@ -51,19 +50,16 @@
     <Resource Include="Icons\close_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\max_Act_Icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Icons\max_Icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Icons\min_Act_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\min_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\refresh_icon.png">
+    <Resource Include="Icons\search_active_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\search_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\broken_clouds_icon.png">

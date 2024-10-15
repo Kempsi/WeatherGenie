@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Managers;
 using WeatherScanner.Entities.Models;
@@ -25,7 +26,7 @@ namespace WeatherScanner
 		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
 		private WeatherAPI WeatherAPI = new WeatherAPI();
 
-		private string city = "Joensuu";
+		private string city = "Helsinki";
 		private CityCords cityCords;
 
 
@@ -69,6 +70,8 @@ namespace WeatherScanner
 		private async Task PopulateForecast()
 		{
 			await forecastManager.InitializeForecast();
+
+			sp_forecastcards.Children.Clear();
 
 			for (int i = 0; i < forecastManager.forecastCards.Length; i++)
 			{
@@ -143,8 +146,25 @@ namespace WeatherScanner
 			Response = await WeatherAPI.GetForecast(cityCords.Lat, cityCords.Lon);
 		}
 
+
+
 		#endregion Async
 
+		#region UI Buttons
+
+		private async void btn_SearchClicked(object sender, RoutedEventArgs e)
+		{
+			if (!string.IsNullOrEmpty(txt_Search.Text))
+			{
+				city = txt_Search.Text;
+				await InitializeAsync();
+
+				selectedDayManager.SetCity(city);
+				selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
+			}
+		}
+
+		#endregion UI BUttons
 
 	}
 
