@@ -40,14 +40,24 @@ namespace WeatherScanner.Entities.Services
             }
 
             var data = JArray.Parse(json);
-            var cityCords = new CityCords()
-            {
-                City = (string)data[0]["name"],
-                Lat = (double)data[0]["lat"],
-                Lon = (double)data[0]["lon"]
-            };
 
-            return cityCords;
+            if (data.Any())
+			{
+				var cityCords = new CityCords()
+				{
+					City = (string)data[0]["name"],
+					Lat = (double)data[0]["lat"],
+					Lon = (double)data[0]["lon"]
+				};
+
+				return cityCords;
+
+			}
+
+            var emptyCords = new CityCords();
+            return emptyCords;
+
+            
         }
     }
 }

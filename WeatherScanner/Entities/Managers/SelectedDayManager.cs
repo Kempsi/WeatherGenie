@@ -83,6 +83,11 @@ namespace WeatherScanner.Entities.Managers
 		// Returns the city name
 		private string GetCity()
 		{
+			if (Response.city.name == "Globe")
+			{
+				return "Globe";
+			}
+
 			return char.ToUpper(Response.city.name[0]) + Response.city.name.Substring(1) + ", ";
 		}
 
