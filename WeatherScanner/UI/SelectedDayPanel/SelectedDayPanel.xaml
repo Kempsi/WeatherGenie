@@ -107,7 +107,7 @@
                     VerticalAlignment="Top"
                     Grid.Row="5">
 
-            <Label Content="{Binding TimeZone}"
+            <Label Content="{Binding Timezone}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="18"
