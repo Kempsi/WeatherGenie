@@ -1,5 +1,5 @@
 # WeatherGenie
-![image](https://github.com/user-attachments/assets/f49223aa-e85c-478f-9b70-68448d0daf94)
+![image](https://github.com/user-attachments/assets/4fd8fb42-3b45-475f-91b4-041ece60695f)
 #
 #### C# WPF app that shows weather forecast of five days. 
 #### User can click on a wanted date and display more information about that date.
