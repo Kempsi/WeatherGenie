@@ -67,9 +67,9 @@ namespace WeatherScanner.Entities.Managers
 			SelectedDayPanel.ImageSource = GetIcon();
 			SelectedDayPanel.Desc = GetDesc();
 			SelectedDayPanel.Date = GetUpdatedDate();
-			SelectedDayPanel.FeelsLike = string.Empty;
-			SelectedDayPanel.WindSpeed = string.Empty;
-			SelectedDayPanel.MyVisibility = string.Empty;
+			SelectedDayPanel.FeelsLike = GetFeelsLike();
+			SelectedDayPanel.WindSpeed = GetWindSpeed();
+			SelectedDayPanel.MyVisibility = GetVisibility();
 			SelectedDayPanel.Timezone = string.Empty;
 			SelectedDayPanel.Humidity = string.Empty;
 			SelectedDayPanel.Sunset = string.Empty;
@@ -166,6 +166,129 @@ namespace WeatherScanner.Entities.Managers
 		{
 			return "Updated as of " + AllCards[0].FullDate;
 		}
+
+		// Returns middays feels like tempature from the clicked date 
+		private string GetFeelsLike()
+		{
+			// Get the active card
+			var activeCard = AllCards.FirstOrDefault(card => card.IsActive == true);
+
+			foreach (var item in Response.list)
+			{
+				DateTime date = DateTime.Parse(item.dt_txt);
+
+				// If the active card is the first one
+				// Get the lates feels like temp
+				if (activeCard == AllCards[0])
+				{
+					if (date.Date == SelectedDate.Date)
+					{
+						int roundedTemp = Convert.ToInt32(Math.Round(item.main.feels_like));
+						return "Feels like " + roundedTemp.ToString() + "°";
+					}
+				}
+
+				else
+				{
+					// Else we search for matching dates with time of day of 12:00
+					if (date.Date == SelectedDate.Date && date.TimeOfDay.Hours == 12)
+					{
+						int roundedTemp = Convert.ToInt32(Math.Round(item.main.feels_like));
+						return "Feels like " + roundedTemp.ToString() + "°";
+					}
+
+
+
+				}
+
+
+			}
+
+			return "Error";
+		}
+
+		// Returns middays windspeed from the clicked date 
+		private string GetWindSpeed()
+		{
+			// Get the active card
+			var activeCard = AllCards.FirstOrDefault(card => card.IsActive == true);
+
+			foreach (var item in Response.list)
+			{
+				DateTime date = DateTime.Parse(item.dt_txt);
+
+				// If the active card is the first one
+				// Get the lates windspeed
+				if (activeCard == AllCards[0])
+				{
+					if (date.Date == SelectedDate.Date)
+					{
+						int roundedSpeed = Convert.ToInt32(Math.Round(item.wind.speed));
+						return "Wind " + roundedSpeed.ToString() + "km/h";
+					}
+				}
+
+				else
+				{
+					// Else we search for matching dates with time of day of 12:00
+					if (date.Date == SelectedDate.Date && date.TimeOfDay.Hours == 12)
+					{
+						int roundedSpeed = Convert.ToInt32(Math.Round(item.wind.speed));
+						return "Wind " + roundedSpeed.ToString() + "km/h";
+					}
+
+
+
+				}
+
+
+			}
+
+			return "Error";
+		}
+
+		// Returns middays visibility from the clicked date
+		private string GetVisibility()
+		{
+			// Get the active card
+			var activeCard = AllCards.FirstOrDefault(card => card.IsActive == true);
+
+			foreach (var item in Response.list)
+			{
+				DateTime date = DateTime.Parse(item.dt_txt);
+
+				// If the active card is the first one
+				// Get the lates visibility
+				if (activeCard == AllCards[0])
+				{
+					if (date.Date == SelectedDate.Date)
+					{
+						var visibilityKM = item.visibility / 1000;
+
+						return visibilityKM.ToString() + "km";
+					}
+				}
+
+				else
+				{
+					// Else we search for matching dates with time of day of 12:00
+					if (date.Date == SelectedDate.Date && date.TimeOfDay.Hours == 12)
+					{
+						var visibilityKM = item.visibility / 1000;
+
+						return visibilityKM.ToString() + "km";
+					}
+
+
+
+				}
+
+
+			}
+
+			return "Error";
+		}
+
 
 
 		#endregion Data fetching and binding
