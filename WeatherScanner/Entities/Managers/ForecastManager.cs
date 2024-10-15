@@ -1,4 +1,5 @@
-﻿using WeatherScanner.Entities.Forecast;
+﻿using System.Diagnostics;
+using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.UI.ForecastCard;
 
@@ -288,8 +289,28 @@ namespace WeatherScanner.Entities.Managers
 
             foreach (var icon in weatherIcons)
             {
-                if (icon.Key == card.Desc.ToLower())
+				if (icon.Key == card.Desc.ToLower())
 				{
+					//if (forecastCards[0] == card)
+					//{
+					//	var unixSunset = response.city.sunset;
+					//	var offSetSunset = DateTimeOffset.FromUnixTimeSeconds(unixSunset);
+					//	var timeZoneOffsetSunset = TimeSpan.FromSeconds(response.city.timezone);
+					//	var cityLocalTimeSunset = offSetSunset.ToOffset(timeZoneOffsetSunset);
+
+					//	var unixCurrent = response.list[0].dt;
+					//	var offSetCurrent = DateTimeOffset.FromUnixTimeSeconds(unixCurrent);
+					//	var timeZoneOffsetCurrent = TimeSpan.FromSeconds(response.city.timezone);
+					//	var cityLocalTimeCurrent = offSetCurrent.ToOffset(timeZoneOffsetCurrent);
+
+					//	if (cityLocalTimeCurrent > cityLocalTimeSunset)
+					//	{
+					//		// Shows wrong time in local time
+							// Not working right now
+					//	}
+
+					//}
+
 					return icon.Value;
 				}
             }
