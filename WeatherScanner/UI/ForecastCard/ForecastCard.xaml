@@ -53,6 +53,7 @@
                        Width="35"
                        Height="35"
                        HorizontalAlignment="Left"
+                       RenderOptions.BitmapScalingMode="HighQuality"
                        Margin="10,-10,0,0"/>
 
                 <StackPanel Orientation="Horizontal"

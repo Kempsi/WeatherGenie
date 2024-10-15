@@ -26,6 +26,7 @@
                         <Image Source="{Binding ImageSource}"
                            Width="15"
                            Height="15"
+                           RenderOptions.BitmapScalingMode="HighQuality"
                            x:Name="imageIcon"/>
                     </Grid>
                     

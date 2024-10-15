@@ -52,7 +52,8 @@
 
             <Image Source="{Binding ImageSource}"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
 
             <Label Content="{Binding Temp}"
                    HorizontalAlignment="Center"
