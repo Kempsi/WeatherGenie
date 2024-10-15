@@ -34,6 +34,8 @@ namespace WeatherScanner
 		{
 			InitializeComponent();
 			EncryptConfig();
+
+			this.Visibility = Visibility.Hidden;
 			InitializeAsync();
 
 			forecastManager.ActiveCardChanged += OnActiveCardChanged;
@@ -137,6 +139,8 @@ namespace WeatherScanner
 			AllCards = forecastManager.GetCards();
 
 			await PopulateDayPanel(Response, AllCards);
+
+			this.Visibility = Visibility.Visible;
 		}
 
 		// Makes a separate request for selected day panel

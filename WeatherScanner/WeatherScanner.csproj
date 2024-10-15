@@ -12,8 +12,11 @@
     <None Remove="BackgroundImages\BrokenClouds.jpg" />
     <None Remove="BackgroundImages\clear_bg.jpg" />
     <None Remove="BackgroundImages\cloudy.jpg" />
-    <None Remove="Icons\close_Act_Icon.png" />
+    <None Remove="Icons\close_active_blue_icon.png" />
+    <None Remove="Icons\close_active_Icon.png" />
     <None Remove="Icons\close_Icon.png" />
+    <None Remove="Icons\close_white_icon.png" />
+    <None Remove="Icons\min_active_Icon.png" />
     <None Remove="Icons\min_Act_Icon.png" />
     <None Remove="Icons\min_Icon.png" />
     <None Remove="Icons\search_active_icon.png" />
@@ -44,16 +47,22 @@
     <Resource Include="BackgroundImages\cloudy.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_Act_Icon.png">
+    <Resource Include="Icons\close_active_blue_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\close_Icon.png">
+    <Resource Include="Icons\close_active_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\min_Act_Icon.png">
+    <Resource Include="Icons\close_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\min_Icon.png">
+    <Resource Include="Icons\close_white_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\min_active_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\min_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\search_active_icon.png">

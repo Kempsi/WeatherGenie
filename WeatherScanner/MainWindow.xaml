@@ -65,9 +65,10 @@
             <TextBox Background="Transparent"
                      Foreground="White"
                      HorizontalAlignment="Right"
-                     Width="235" 
+                     Width="285" 
                      FontSize="25"
                      x:Name="txt_Search"
+                     MaxLength="14"
                      HorizontalContentAlignment="Center"
                      VerticalContentAlignment="Center"
                      SelectionBrush="#FF6DD5FF"/>
@@ -87,7 +88,7 @@
                 ButtonClick="btn_SearchClicked"
                 Height="20" Width="20"              
                 HorizontalAlignment="Right"
-                Margin="0,0,250,0"
+                Margin="0,0,300,0"
                 RenderTransformOrigin="0.5,0.5">
                 <WindowControls:WindowControlButton.RenderTransform>
                     <TransformGroup>
@@ -115,15 +116,15 @@
                    Margin="0,0,780,0"/>
 
             <WindowControls:WindowControlButton 
-                NormalImageSource="../Icons/min_Icon.png"
-                ActiveImageSource="../Icons/min_Act_Icon.png"
+                NormalImageSource="../Icons/min_icon.png"
+                ActiveImageSource="../Icons/min_active_icon.png"
                 ButtonClick="btn_MinClicked"
                 Height="25" Width="25"
                 Margin="10,0,15,0"/>
 
             <WindowControls:WindowControlButton 
-                NormalImageSource="../Icons/close_Icon.png"
-                ActiveImageSource="../Icons/close_Act_Icon.png"
+                NormalImageSource="../Icons/close_icon.png"
+                ActiveImageSource="../Icons/close_active_Icon.png"
                 ButtonClick="btn_CloseClicked"
                 Height="25" Width="25"
                 Margin="10,0,15,0"/>
