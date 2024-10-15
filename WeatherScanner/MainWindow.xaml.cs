@@ -25,7 +25,7 @@ namespace WeatherScanner
 		private GeoCoderAPI GeoCoderAPI = new GeoCoderAPI();
 		private WeatherAPI WeatherAPI = new WeatherAPI();
 
-		private string city = "Joensuu";
+		private string city = "Malaga";
 		private CityCords cityCords;
 
 

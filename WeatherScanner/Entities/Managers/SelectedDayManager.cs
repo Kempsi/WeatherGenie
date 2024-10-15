@@ -1,4 +1,5 @@
-﻿using WeatherScanner.Entities.Forecast;
+﻿using System.Diagnostics;
+using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Models;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.UI.ForecastCard;
@@ -8,7 +9,7 @@ namespace WeatherScanner.Entities.Managers
 {
 	public class SelectedDayManager
 	{
-		
+
 		private DateTime SelectedDate;
 		private string City;
 		private CityCords Cords;
@@ -21,7 +22,7 @@ namespace WeatherScanner.Entities.Managers
 		private WeatherAPI WeatherAPI;
 
 		private ForecastCard[] AllCards;
-		
+
 
 		public SelectedDayManager(ForecastResponse response, ForecastCard[] allCards)
 		{
@@ -35,20 +36,21 @@ namespace WeatherScanner.Entities.Managers
 			AllCards = allCards;
 
 			InitializeAsync();
-			PopulateDayPanel();
 
 		}
 
+		#region Async
 
 		private async Task InitializeAsync()
 		{
-			//await ForecastManager.InitializeForecast();
-
 			PopulateDayPanel();
 		}
 
+		#endregion Async
 
+		#region Day panel population
 
+		// Populates the day panel with information
 		private void PopulateDayPanel()
 		{
 			foreach (var item in AllCards)
@@ -73,49 +75,79 @@ namespace WeatherScanner.Entities.Managers
 			SelectedDayPanel.Sunset = string.Empty;
 			SelectedDayPanel.Sunrise = string.Empty;
 
-			
 		}
 
+		#endregion Day panel population
+
+		#region Data fetching and binding
+
+		// Returns the city name
 		private string GetCity()
 		{
 			return char.ToUpper(Response.city.name[0]) + Response.city.name.Substring(1) + ", ";
 		}
 
+		// Returns the country name
 		private string GetCountry()
 		{
 			return Response.city.country.ToUpper();
 		}
 
+		// Returns middays tempature from the clicked date 
 		private string GetTemp()
 		{
-            foreach (var item in Response.list)
-            {
+			// Get the active card
+			var activeCard = AllCards.FirstOrDefault(card => card.IsActive == true);
+
+			foreach (var item in Response.list)
+			{
 				DateTime date = DateTime.Parse(item.dt_txt);
 
-
-                if (date.Date == SelectedDate.Date)
+				// If the active card is the first one
+				// Get the lates tempature
+				if (activeCard == AllCards[0])
 				{
-					int roundedTemp = Convert.ToInt32(Math.Round(item.main.temp_max));
-					return roundedTemp.ToString() + "°";
+					if (date.Date == SelectedDate.Date)
+					{
+						int roundedTemp = Convert.ToInt32(Math.Round(item.main.temp));
+						return roundedTemp.ToString() + "°";
+					}
 				}
-            }
+
+				else
+				{
+					// Else we search for matching dates with time of day of 12:00
+					if (date.Date == SelectedDate.Date && date.TimeOfDay.Hours == 12)
+					{
+						int roundedTemp = Convert.ToInt32(Math.Round(item.main.temp));
+						return roundedTemp.ToString() + "°";
+					}
+
+
+
+				}
+
+
+			}
 
 			return "Error";
-        }
+		}
 
+		// Returns the correct icon
 		private string GetIcon()
 		{
-            foreach (var item in AllCards)
-            {
-                if (item.IsActive)
+			foreach (var item in AllCards)
+			{
+				if (item.IsActive)
 				{
 					return item.ImageSource;
 				}
-            }
+			}
 
 			return "Error";
-        }
+		}
 
+		// Returns the correct description
 		private string GetDesc()
 		{
 			foreach (var item in AllCards)
@@ -129,11 +161,16 @@ namespace WeatherScanner.Entities.Managers
 			return "Error";
 		}
 
+		// Returns the lates information about update time
 		private string GetUpdatedDate()
 		{
 			return "Updated as of " + AllCards[0].FullDate;
 		}
 
+
+		#endregion Data fetching and binding
+
+		#region Assisting methods
 
 		// Returns the selected day panel
 		public SelectedDayPanel GetSelectedDayPanel()
@@ -153,5 +190,9 @@ namespace WeatherScanner.Entities.Managers
 			SelectedDate = DateTime.Parse(activeCard.FullDate);
 			PopulateDayPanel();
 		}
+
+		#endregion Assisting methods
+
+
 	}
 }
