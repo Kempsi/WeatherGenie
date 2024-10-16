@@ -11,10 +11,14 @@
 ![image](https://github.com/user-attachments/assets/64eff661-d21e-4232-b46f-b236891d4dd4)
 #
 ![image](https://github.com/user-attachments/assets/11656a84-24eb-4f35-8c70-6c83f305bbbc)
-
+#
+## Sources
+#### Weather data from: https://openweathermap.org/
+#### Images from: https://pixabay.com/
+#### Icons from: https://www.flaticon.com/
+#### Some icons and images were also modified by me using GIMP to suit my needs.
 #
 ## Development log
-#
 #### - 06.10.2024 - 
 #### Weather app that shows current weather and forecast of 5 days.
 #### Most of the API requests are done.
