@@ -63,7 +63,8 @@
                      Margin="650,0,0,0"
                      HorizontalContentAlignment="Center"
                      VerticalContentAlignment="Center"
-                     SelectionBrush="#FF6DD5FF"/>
+                     SelectionBrush="#FF6DD5FF"
+                     KeyDown="txt_KeyDownPressed"/>
 
 
             <WindowControls:WindowControlButton NormalImageSource="../Icons/UI icons/close_white_icon.png"

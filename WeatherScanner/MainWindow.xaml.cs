@@ -191,6 +191,14 @@ namespace WeatherScanner
 			}
 		}
 
+		private void txt_KeyDownPressed(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				btn_SearchClicked(sender,e);
+			}
+		}
+
 		#endregion UI BUttons
 
 
