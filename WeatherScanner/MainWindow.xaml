@@ -7,6 +7,7 @@
         xmlns:UI="clr-namespace:WeatherScanner.UI.ForecastCard" 
         xmlns:WindowControls="clr-namespace:GalleryApp.UserControls" 
         xmlns:UIUpper="clr-namespace:WeatherScanner.UI.SelectedDayPanel"
+        xmlns:UIBG="clr-namespace:WeatherScanner.UI.BackgroundImage"
         mc:Ignorable="d"
         Title="Weather Genie" 
         WindowStyle="None"
@@ -33,19 +34,9 @@
         <!-- Background image -->
         <Grid Grid.Row="1"
               Grid.RowSpan="3">
-            <Image Source="/BackgroundImages/cloudy.jpg" 
-                   RenderTransformOrigin="0.5,0.5" 
-                   
-                   >
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="1" ScaleY="1.15"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
+
+            <UIBG:BackgroundImage
+                x:Name="image_BG"/>
 
         </Grid>
 

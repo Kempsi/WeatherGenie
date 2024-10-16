@@ -8,11 +8,9 @@ namespace WeatherScanner.Entities.Managers
 {
 	public class SelectedDayManager
 	{
-
 		private DateTime SelectedDate;
 		private string City;
 		private CityCords Cords;
-
 
 		private SelectedDayPanel SelectedDayPanel;
 		private ForecastManager ForecastManager;
@@ -21,7 +19,6 @@ namespace WeatherScanner.Entities.Managers
 		private WeatherAPI WeatherAPI;
 
 		private ForecastCard[] AllCards;
-
 
 		public SelectedDayManager(ForecastResponse response, ForecastCard[] allCards)
 		{
@@ -73,7 +70,7 @@ namespace WeatherScanner.Entities.Managers
 			SelectedDayPanel.Humidity = GetHumidity();
 			SelectedDayPanel.Sunset = GetSunset();
 			SelectedDayPanel.Sunrise = GetSunrise();
-
+			
 		}
 
 		#endregion Day panel population

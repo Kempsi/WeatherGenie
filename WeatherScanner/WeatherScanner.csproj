@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="BackgroundImages\BrokenClouds.jpg" />
-    <None Remove="BackgroundImages\clear_bg.jpg" />
+    <None Remove="BackgroundImages\broken_clouds.jpg" />
+    <None Remove="BackgroundImages\clear_sky.jpg" />
     <None Remove="BackgroundImages\cloudy.jpg" />
+    <None Remove="BackgroundImages\cloudy_fixed.jpg" />
+    <None Remove="BackgroundImages\rain.jpg" />
+    <None Remove="BackgroundImages\snow.jpg" />
+    <None Remove="BackgroundImages\thunderstorm.jpg" />
     <None Remove="Icons\close_active_blue_icon.png" />
     <None Remove="Icons\close_active_Icon.png" />
     <None Remove="Icons\close_Icon.png" />
@@ -41,13 +45,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="BackgroundImages\BrokenClouds.jpg">
+    <Resource Include="BackgroundImages\broken_clouds.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="BackgroundImages\clear_bg.jpg">
+    <Resource Include="BackgroundImages\clear_sky.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="BackgroundImages\cloudy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="BackgroundImages\rain.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="BackgroundImages\snow.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="BackgroundImages\thunderstorm.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\UI icons\close_active_blue_icon.png">

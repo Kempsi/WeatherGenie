@@ -8,6 +8,7 @@ using WeatherScanner.Entities.Managers;
 using WeatherScanner.Entities.Models;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.Entities.WeatherModels;
+using WeatherScanner.UI.BackgroundImage;
 using WeatherScanner.UI.ForecastCard;
 using WeatherScanner.UI.SelectedDayPanel;
 
@@ -20,6 +21,10 @@ namespace WeatherScanner
 	{
 		ForecastManager forecastManager = new ForecastManager();
 		SelectedDayManager selectedDayManager;
+		BackgroundImageManager imageManager = new BackgroundImageManager();
+
+
+		BackgroundImage backgroundImage = new BackgroundImage();
 
 		private ForecastResponse Response = new ForecastResponse();
 		private ForecastCard[] AllCards = new ForecastCard[5];
@@ -49,6 +54,11 @@ namespace WeatherScanner
 		{
 			selectedDayManager.UpdateActiveCard(forecastManager.GetActiveCard());
 			selectedDayPanel.DataContext = selectedDayManager.GetSelectedDayPanel();
+
+
+			var weatherDesc = obj.Desc;
+			imageManager.SetBackgroundImage(weatherDesc);
+			image_BG.DataContext = imageManager.GetImage();
 		}
 
 		#endregion Click listener
@@ -139,6 +149,11 @@ namespace WeatherScanner
 			AllCards = forecastManager.GetCards();
 
 			await PopulateDayPanel(Response, AllCards);
+
+
+			var weatherDesc = forecastManager.GetActiveCard().Desc;
+			imageManager.SetBackgroundImage(weatherDesc); 
+			image_BG.DataContext = imageManager.GetImage(); 
 
 			this.Visibility = Visibility.Visible;
 		}
