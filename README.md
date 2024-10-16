@@ -5,6 +5,14 @@
 #### User can click on a wanted date and display more information about that date.
 #### User can also search for cities with a search function and the app display the found citys weather information.
 #
+## Images
+![image](https://github.com/user-attachments/assets/923266d6-b835-481b-9424-c0b37dd61f07)
+#
+![image](https://github.com/user-attachments/assets/64eff661-d21e-4232-b46f-b236891d4dd4)
+#
+![image](https://github.com/user-attachments/assets/11656a84-24eb-4f35-8c70-6c83f305bbbc)
+
+#
 ## Development log
 #
 #### - 06.10.2024 - 
@@ -19,7 +27,7 @@
 ![image](https://github.com/user-attachments/assets/75c840c8-7614-4258-8e25-15364e6db33f)
 #
 #### - 14.10.2024 -
-#### Started the work on displaying more information about selected day
+#### Started the work on displaying more information about selected day.
 #
 #### - 15.10.2024 -
 #### Displaying correct information about selected day works now and also added city search function.
@@ -28,5 +36,8 @@
 #### And also might try to add a feature that lets you save citys as favourites, but that needs a database, so not sure about that right know.
 ![image](https://github.com/user-attachments/assets/08ebcbc4-8f6e-4447-a849-d0cc7f1c3b2e)
 #
-![image](https://github.com/user-attachments/assets/80acefb7-0fac-4f08-b447-edc6f8feba68)
+#### - 16.10.2024 -
+#### Added night icons, which only show up on the current day. If sun has set, then night icons are displayed.
+#### Background now changes depending on clicked dates weather condition. Currently there are 6 different images that can be displayed.
+#### City search function now accepts enter as an input.
 
