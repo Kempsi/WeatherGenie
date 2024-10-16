@@ -88,8 +88,8 @@ namespace WeatherScanner.Entities.Managers
 
 				// Night
 				{"night", ConfigurationManager.AppSettings["NightIcon"] },
-				{"nightRain", ConfigurationManager.AppSettings["NightRainIcon"] },
-				{"nightShowerRain", ConfigurationManager.AppSettings["NightShowerRainIcon"] }
+				{"nightShowerRain", ConfigurationManager.AppSettings["NightShowerRainIcon"] },
+				{"nightTunderstorm", ConfigurationManager.AppSettings["NightTunderstormIcon"] }
 
 			};
 

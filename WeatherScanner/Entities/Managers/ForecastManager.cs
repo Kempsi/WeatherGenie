@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Windows.Input;
 using WeatherScanner.Entities.Forecast;
 using WeatherScanner.Entities.Services;
 using WeatherScanner.UI.ForecastCard;
@@ -291,25 +292,42 @@ namespace WeatherScanner.Entities.Managers
             {
 				if (icon.Key == card.Desc.ToLower())
 				{
-					//if (forecastCards[0] == card)
-					//{
-					//	var unixSunset = response.city.sunset;
-					//	var offSetSunset = DateTimeOffset.FromUnixTimeSeconds(unixSunset);
-					//	var timeZoneOffsetSunset = TimeSpan.FromSeconds(response.city.timezone);
-					//	var cityLocalTimeSunset = offSetSunset.ToOffset(timeZoneOffsetSunset);
+					if (forecastCards[0] == card)
+					{
+						var unixSunset = response.city.sunset;
+						var offSetSunset = DateTimeOffset.FromUnixTimeSeconds(unixSunset);
+						var timeZoneOffsetSunset = TimeSpan.FromSeconds(response.city.timezone);
+						var cityLocalTimeSunset = offSetSunset.ToOffset(timeZoneOffsetSunset);
+						var cityLocalTimeSunsetDateTime= cityLocalTimeSunset.DateTime;
+						
+						var utcNow = DateTime.UtcNow;
+						var timeZoneOffsetCurrent = TimeSpan.FromSeconds(response.city.timezone);
+						var cityLocalTimeCurrent = utcNow + timeZoneOffsetCurrent;
 
-					//	var unixCurrent = response.list[0].dt;
-					//	var offSetCurrent = DateTimeOffset.FromUnixTimeSeconds(unixCurrent);
-					//	var timeZoneOffsetCurrent = TimeSpan.FromSeconds(response.city.timezone);
-					//	var cityLocalTimeCurrent = offSetCurrent.ToOffset(timeZoneOffsetCurrent);
 
-					//	if (cityLocalTimeCurrent > cityLocalTimeSunset)
-					//	{
-					//		// Shows wrong time in local time
-							// Not working right now
-					//	}
+						// Return night icon if sun has set
+						if (cityLocalTimeCurrent > cityLocalTimeSunsetDateTime)
+						{
+							var weatherDescription = card.Desc.ToLower();
 
-					//}
+							if (weatherDescription.Contains("rain"))
+							{
+								return weatherIcons.FirstOrDefault(icon => icon.Key == "nightRain").Value;
+							}
+
+							else if (weatherDescription.Contains("tunderstorm"))
+							{
+								return weatherIcons.FirstOrDefault(icon => icon.Key == "nightThunderstorm").Value;
+							}
+
+							else
+							{
+								return weatherIcons.FirstOrDefault(icon => icon.Key == "night").Value;
+							}
+
+						}
+
+					}
 
 					return icon.Value;
 				}
@@ -317,6 +335,19 @@ namespace WeatherScanner.Entities.Managers
 
 			return "Error";
         }
+
+		// Returns sunset in the selected city
+		private string GetSunset()
+		{
+			var unixTime = response.city.sunset;
+			var offSet = DateTimeOffset.FromUnixTimeSeconds(unixTime);
+
+			var timeZoneOffset = TimeSpan.FromSeconds(response.city.timezone);
+
+			var cityLocalTime = offSet.ToOffset(timeZoneOffset);
+
+			return cityLocalTime.ToString("HH:mm");
+		}
 
 		#endregion Weather icon status logic
 

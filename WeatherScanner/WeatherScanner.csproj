@@ -28,12 +28,12 @@
     <None Remove="Icons\Weather icons\night_icon.png" />
     <None Remove="Icons\Weather icons\overcast_clouds_icon.png" />
     <None Remove="Icons\Weather icons\rain_icon.png" />
-    <None Remove="Icons\Weather icons\rain_night_icon.png" />
     <None Remove="Icons\Weather icons\scattered_clouds_icon.png" />
     <None Remove="Icons\Weather icons\shower_rain_icon.png" />
     <None Remove="Icons\Weather icons\shower_rain_night_icon.png" />
     <None Remove="Icons\Weather icons\snow_icon.png" />
     <None Remove="Icons\Weather icons\thunderstorm_icon.png" />
+    <None Remove="Icons\Weather icons\tunderstorm_night_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,9 +95,6 @@
     <Resource Include="Icons\Weather icons\rain_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\Weather icons\rain_night_icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Icons\Weather icons\scattered_clouds_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -111,6 +108,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Weather icons\thunderstorm_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Weather icons\tunderstorm_night_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
