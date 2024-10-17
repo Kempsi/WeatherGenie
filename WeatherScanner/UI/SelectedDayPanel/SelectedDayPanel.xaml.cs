@@ -177,11 +177,17 @@ namespace WeatherScanner.UI.SelectedDayPanel
 
 		#endregion Properties
 
+		#region OnPropertyChanged
+
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		private void OnPropertyChanged([CallerMemberName] string propName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 		}
+
+		#endregion OnPropertyChanged
+
+
 	}
 }

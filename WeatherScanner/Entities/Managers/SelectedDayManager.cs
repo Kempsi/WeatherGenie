@@ -266,7 +266,7 @@ namespace WeatherScanner.Entities.Managers
 					{
 						var visibilityKM = item.visibility / 1000;
 
-						return visibilityKM.ToString() + "km";
+						return "Visibility " + visibilityKM.ToString() + "km";
 					}
 				}
 
@@ -277,7 +277,7 @@ namespace WeatherScanner.Entities.Managers
 					{
 						var visibilityKM = item.visibility / 1000;
 
-						return visibilityKM.ToString() + "km";
+						return "Visibility " + visibilityKM.ToString() + "km";
 					}
 
 
