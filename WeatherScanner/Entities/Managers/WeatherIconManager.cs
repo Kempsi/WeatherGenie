@@ -92,8 +92,6 @@ namespace WeatherScanner.Entities.Managers
 				{"nightTunderstorm", ConfigurationManager.AppSettings["NightTunderstormIcon"] }
 
 			};
-
-
 		}
 
 		public Dictionary<string, string> GetWeatherIcons()

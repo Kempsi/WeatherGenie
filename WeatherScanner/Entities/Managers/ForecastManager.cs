@@ -312,7 +312,7 @@ namespace WeatherScanner.Entities.Managers
 
 							if (weatherDescription.Contains("rain"))
 							{
-								return weatherIcons.FirstOrDefault(icon => icon.Key == "nightRain").Value;
+								return weatherIcons.FirstOrDefault(icon => icon.Key == "nightShowerRain").Value;
 							}
 
 							else if (weatherDescription.Contains("tunderstorm"))
