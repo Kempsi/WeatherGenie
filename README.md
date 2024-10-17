@@ -1,16 +1,16 @@
 # WeatherGenie
-![image](https://github.com/user-attachments/assets/4fd8fb42-3b45-475f-91b4-041ece60695f)
+![image](https://github.com/user-attachments/assets/7fb672aa-f19c-46c2-9dae-b0c94a8acb2f)
 #
 #### C# WPF app that shows weather forecast of five days. 
 #### User can click on a wanted date and display more information about that date.
 #### User can also search for cities with a search function and the app display the found citys weather information.
 #
 ## Images
-![image](https://github.com/user-attachments/assets/923266d6-b835-481b-9424-c0b37dd61f07)
+![image](https://github.com/user-attachments/assets/983f23cb-bf9d-4502-a3b9-07b2424a487c)
 #
-![image](https://github.com/user-attachments/assets/64eff661-d21e-4232-b46f-b236891d4dd4)
+![image](https://github.com/user-attachments/assets/4bc8fcd9-71fb-44c1-a330-3a7ac9a3932f)
 #
-![image](https://github.com/user-attachments/assets/11656a84-24eb-4f35-8c70-6c83f305bbbc)
+![image](https://github.com/user-attachments/assets/0417c0c8-b36f-4b32-a196-c891245a798e)
 #
 ## Sources
 #### Weather data from: https://openweathermap.org/
